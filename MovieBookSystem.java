@@ -101,7 +101,7 @@ class BookingSystem {
     }
 }
 
-public class MovieBookingSystem {
+public class MovieBookSystem {
     public static void main(String[] args) {
         BookingSystem bookingSystem = new BookingSystem();
        
