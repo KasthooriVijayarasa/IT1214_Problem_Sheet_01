@@ -5,28 +5,25 @@ class Student{
 	private int exam3;
 	
 	boolean validateMarks(int marks){
-		if (marks<=100 && marks>=0){
+		if (marks>=0 && marks<=100){
 			return true;
 		}else{
 			return false;
 		}
 	}
-	
-	Student(String na, int e1,int e2,int e3)throws Exception{
-		name=na;
-		exam1=e1;
-		exam2=e2;
-		exam3=e3;
-
-		if (validateMarks(e1)&&validateMarks(e2)&&validateMarks(e3)){
-			exam1=e1;
-			exam2=e2;
-			exam3=e3;
-		}else {
-			System.out.println("Setting the marks value to 0");
-			throw new Exception("Invalid marks");
-		}
+	Student(String name, int exam1, int exam2, int exam3) throws Exception{
+		this.name = name;
+		this.exam1 = exam1;
+		this.exam2 = exam2;
+		this.exam3 = exam3;
 		
+		if (validateMarks(exam1) && validateMarks(exam2) && validateMarks(exam3)){
+			exam1 = exam1;
+			exam2 = exam2;
+			exam3 = exam3;
+		}else{			
+			throw new Exception ("Exam scores must be between 0 and 100.");
+		}
 	}
 	
 	String getName(){
@@ -41,26 +38,25 @@ class Student{
 	int getExam3(){
 		return exam3;
 	}
+	
+	double calculateAverage(){
+		double average=exam1+exam2+exam3/3;
+		return average;
+	}
 }
 
-class StudentDemo{
+public class StudentDemo{
 	public static void main(String[] args){
-		
-		
 		try{
-		
-		Student student2= new Student("John",75,100,90);
-		System.out.println("Name of the student 2 is : "+student2.getName());
-		System.out.println("Name of the student 2 for exam1 is : "+student2.getExam1());
-		
-		Student student1= new Student("Adam",75,110,-90);		
-		System.out.println("Name of the student 1 is : "+student1.getName());
-		System.out.println("Name of the student 1 for exam1 is : "+student1.getExam1());
-		System.out.println("Name of the student 1 for exam2 is : "+student1.getExam2());
-		
+			
+			Student s1=new Student("Mark",55,100,80);
+			System.out.println("Name: "+s1.getName()+" \nExam1: "+s1.getExam1()+" \nExam2: "+s1.getExam2()+" \nExam3: "+s1.getExam3()+" \nAverage: "+s1.calculateAverage());
+			
+			Student s2=new Student("John",75,110,90);
+			System.out.println("Name: "+s2.getName()+" \nExam1: "+s2.getExam1()+" \nExam2: "+s2.getExam2()+" \nExam3: "+s2.getExam3()+" \nAverage: "+s2.calculateAverage());
+			
 		}catch(Exception e){
-			System.out.println("Exception is: "+e.getMessage());
+			System.out.println("Exception is : "+e.getMessage());
 		}
-		
 	}
 }
