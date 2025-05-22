@@ -84,7 +84,7 @@ public class AttendanceSystem {
         classroom.addStudent(new Student(103, "Carol Lee", 10));
         
         classroom.updateAttendance(102, 16);
-        classroom.updateAttendance(104, 5);
+        classroom.updateAttendance(104, 15);
         
         classroom.displayAllStudents();
     }
